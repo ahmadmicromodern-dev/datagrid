@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "extends": [
+    "next/core-web-vitals"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.{ts,tsx}"]
+    ,
+      "rules": {
+        "max-lines": ["warn", { "max": 300, "skipBlankLines": true, "skipComments": true }],
+        "max-lines-per-function": ["warn", { "max": 80, "skipBlankLines": true, "skipComments": true }],
+        "complexity": ["warn", 12],
+        "max-depth": ["warn", 3],
+        "max-params": ["warn", 5]
+      }
+    }
+  ]
+}
+
+

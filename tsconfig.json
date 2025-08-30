@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    // کتابخانه‌های TypeScript برای DOM و ES6+
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // اجازه استفاده از فایل‌های JavaScript
+    "allowJs": true,
+    // هدف کامپایل ES6
+    "target": "ES6",
+    // رد کردن بررسی کتابخانه‌ها برای بهبود سرعت
+    "skipLibCheck": true,
+    // فعال کردن strict mode برای type safety بهتر
+    "strict": true,
+    // عدم تولید فایل‌های خروجی (Next.js خودش مدیریت می‌کند)
+    "noEmit": true,
+    // فعال کردن ES module interop
+    "esModuleInterop": true,
+    // استفاده از ES modules
+    "module": "esnext",
+    // استفاده از bundler برای resolve کردن modules
+    "moduleResolution": "bundler",
+    // اجازه import کردن فایل‌های JSON
+    "resolveJsonModule": true,
+    // جداسازی modules برای بهبود عملکرد
+    "isolatedModules": true,
+    // حفظ JSX برای Next.js
+    "jsx": "preserve",
+    // فعال کردن incremental compilation
+    "incremental": true,
+    // پلاگین Next.js
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    // تعریف path aliases برای import راحت‌تر
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  // فایل‌های شامل در کامپایل
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  // فایل‌های مستثنی از کامپایل
+  "exclude": ["node_modules"]
+}

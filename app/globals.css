@@ -1,0 +1,631 @@
+/**
+ * فایل CSS اصلی پروژه front-rasouli
+ * 
+ * این فایل شامل:
+ * - تنظیمات Tailwind CSS
+ * - متغیرهای CSS برای تم‌های مختلف
+ * - استایل‌های glassmorphism
+ * - تنظیمات حالت تاریک/روشن
+ * 
+ * نکات مهم:
+ * - از CSS variables برای مدیریت تم‌ها استفاده شده
+ * - طراحی glassmorphism با شفافیت و blur
+ * - پشتیبانی کامل از حالت تاریک
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* متغیرهای CSS برای حالت روشن */
+:root {
+  /* رنگ‌های به‌روزرسانی شده برای طراحی glassmorphism */
+  --background: rgba(248, 250, 252, 0.7);
+  --foreground: #1f2937;
+  --card: rgba(255, 255, 255, 0.5);
+  --card-foreground: #374151;
+  --popover: rgba(255, 255, 255, 0.9);
+  --popover-foreground: #1f2937;
+  --primary: #374151;
+  --primary-foreground: #ffffff;
+  --secondary: #6366f1;
+  --secondary-foreground: #ffffff;
+  --muted: #f8fafc;
+  --muted-foreground: #1f2937;
+  --accent: #6366f1;
+  --accent-foreground: #ffffff;
+  --destructive: #ea580c;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(255, 255, 255, 0.9);
+  --ring: rgba(99, 102, 241, 0.5);
+  --chart-1: #6366f1;
+  --chart-2: #059669;
+  --chart-3: #ea580c;
+  --chart-4: #10b981;
+  --chart-5: #374151;
+  --radius: 0.5rem;
+  --sidebar: rgba(255, 255, 255, 0.8);
+  --sidebar-foreground: #1f2937;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(0, 0, 0, 0.2);
+  --sidebar-ring: rgba(99, 102, 241, 0.5);
+}
+
+/* متغیرهای CSS برای حالت تاریک */
+.dark {
+  /* رنگ‌های به‌روزرسانی شده برای حالت تاریک با glassmorphism */
+  --background: rgba(31, 41, 55, 0.8);
+  --foreground: #f9fafb;
+  --card: rgba(55, 65, 81, 0.6);
+  --card-foreground: #f9fafb;
+  --popover: rgba(31, 41, 55, 0.9);
+  --popover-foreground: #f9fafb;
+  --primary: #f9fafb;
+  --primary-foreground: #1f2937;
+  --secondary: #6366f1;
+  --secondary-foreground: #ffffff;
+  --muted: rgba(55, 65, 81, 0.5);
+  --muted-foreground: #d1d5db;
+  --accent: #6366f1;
+  --accent-foreground: #ffffff;
+  --destructive: #ea580c;
+  --destructive-foreground: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(55, 65, 81, 0.8);
+  --ring: rgba(99, 102, 241, 0.5);
+  --chart-1: #6366f1;
+  --chart-2: #059669;
+  --chart-3: #ea580c;
+  --chart-4: #10b981;
+  --chart-5: #374151;
+  --sidebar: rgba(31, 41, 55, 0.9);
+  --sidebar-foreground: #f9fafb;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: rgba(99, 102, 241, 0.5);
+}
+
+/* تعریف تم‌های Tailwind با متغیرهای CSS */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Added glassmorphism backdrop */
+    background-image: radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    backdrop-filter: blur(10px);
+    min-height: 100vh;
+  }
+
+  /* Added glassmorphism utility classes */
+  .glass {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Added scrollbar styling for sidebar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  /* Ensure sticky header works properly */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+  }
+
+  .scrollbar-thumb-muted-foreground\/20::-webkit-scrollbar-thumb {
+    background-color: rgba(107, 114, 128, 0.2);
+  }
+
+  .scrollbar-track-transparent::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(107, 114, 128, 0.2);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 114, 128, 0.4);
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent hydration mismatch by ensuring consistent initial state */
+html {
+  /* Prevent flash of unstyled content */
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ensure body has consistent initial state */
+body {
+  /* Prevent hydration mismatch */
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide content until hydration is complete */
+[data-hydration-mismatch] {
+  display: none;
+}
+
+/* Custom CSS variables for themes */
+:root {
+  --theme-primary: #3b82f6;
+  --theme-secondary: #64748b;
+}
+
+/* Dark mode variables */
+.dark {
+  --theme-primary: #60a5fa;
+  --theme-secondary: #94a3b8;
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.2) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.2);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.4);
+}
+
+/* Prevent layout shift during hydration */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure consistent font rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support for Persian Language */
+/* =============================== */
+
+/* RTL Base Classes */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+/* RTL Text Alignment */
+.rtl .text-left {
+  text-align: right;
+}
+
+.rtl .text-right {
+  text-align: left;
+}
+
+.rtl .text-center {
+  text-align: center;
+}
+
+/* RTL Layout Direction */
+.rtl .flex-row {
+  flex-direction: row-reverse;
+}
+
+.rtl .flex-row-reverse {
+  flex-direction: row;
+}
+
+/* RTL Margins and Paddings */
+.rtl .ml-auto {
+  margin-left: unset;
+  margin-right: auto;
+}
+
+.rtl .mr-auto {
+  margin-right: unset;
+  margin-left: auto;
+}
+
+.rtl .pl-4 {
+  padding-left: unset;
+  padding-right: 1rem;
+}
+
+.rtl .pr-4 {
+  padding-right: unset;
+  padding-left: 1rem;
+}
+
+.rtl .ml-2 {
+  margin-left: unset;
+  margin-right: 0.5rem;
+}
+
+.rtl .mr-2 {
+  margin-right: unset;
+  margin-left: 0.5rem;
+}
+
+/* RTL Border Radius */
+.rtl .rounded-l-md {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+.rtl .rounded-r-md {
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+/* RTL Transform Classes */
+.rtl .translate-x-1 {
+  transform: translateX(-0.25rem);
+}
+
+.rtl .translate-x-2 {
+  transform: translateX(-0.5rem);
+}
+
+.rtl .translate-x-4 {
+  transform: translateX(-1rem);
+}
+
+.rtl .-translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+.rtl .-translate-x-2 {
+  transform: translateX(0.5rem);
+}
+
+.rtl .-translate-x-4 {
+  transform: translateX(1rem);
+}
+
+/* RTL Justify Content */
+.rtl .justify-start {
+  justify-content: flex-end;
+}
+
+.rtl .justify-end {
+  justify-content: flex-start;
+}
+
+/* RTL Grid and Flexbox */
+.rtl .order-1 {
+  order: 2;
+}
+
+.rtl .order-2 {
+  order: 1;
+}
+
+/* RTL Specific Components */
+.rtl .sidebar {
+  border-right: none;
+  border-left: 1px solid var(--sidebar-border);
+}
+
+.rtl .header-nav {
+  flex-direction: row-reverse;
+}
+
+/* RTL Form Elements */
+.rtl input,
+.rtl textarea,
+.rtl select {
+  text-align: right;
+}
+
+/* RTL Icons and Arrows */
+.rtl .icon-arrow-right {
+  transform: scaleX(-1);
+}
+
+.rtl .icon-arrow-left {
+  transform: scaleX(-1);
+}
+
+/* RTL Table Headers */
+.rtl th {
+  text-align: right;
+}
+
+.rtl td {
+  text-align: right;
+}
+
+/* RTL Navigation */
+.rtl .nav-item {
+  margin-left: unset;
+  margin-right: 1.5rem;
+}
+
+/* RTL Button Groups */
+.rtl .btn-group > :first-child {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+.rtl .btn-group > :last-child {
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+/* RTL Dropdowns */
+.rtl .dropdown-menu {
+  right: auto;
+  left: 0;
+}
+
+/* RTL Tooltips */
+.rtl .tooltip {
+  right: auto;
+  left: 100%;
+}
+
+/* RTL Modal and Dialog */
+.rtl .modal-header {
+  flex-direction: row-reverse;
+}
+
+.rtl .modal-footer {
+  flex-direction: row-reverse;
+}
+
+/* RTL List Items */
+.rtl .list-item {
+  padding-left: unset;
+  padding-right: 1rem;
+}
+
+/* RTL Checkbox and Radio */
+.rtl .form-check {
+  padding-left: unset;
+  padding-right: 1.25rem;
+}
+
+.rtl .form-check-input {
+  margin-left: unset;
+  margin-right: -1.25rem;
+}
+
+/* RTL Progress Bars */
+.rtl .progress-bar {
+  float: right;
+}
+
+/* RTL Breadcrumbs */
+.rtl .breadcrumb-item + .breadcrumb-item::before {
+  padding-left: unset;
+  padding-right: 0.5rem;
+}
+
+/* RTL Pagination */
+.rtl .pagination .page-item:first-child .page-link {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+.rtl .pagination .page-item:last-child .page-link {
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+/* RTL Responsive Utilities */
+@media (max-width: 768px) {
+  .rtl .md\:text-left {
+    text-align: right;
+  }
+  
+  .rtl .md\:text-right {
+    text-align: left;
+  }
+  
+  .rtl .md\:justify-start {
+    justify-content: flex-end;
+  }
+  
+  .rtl .md\:justify-end {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1024px) {
+  .rtl .lg\:text-left {
+    text-align: right;
+  }
+  
+  .rtl .lg\:text-right {
+    text-align: left;
+  }
+  
+  .rtl .lg\:justify-start {
+    justify-content: flex-end;
+  }
+  
+  .rtl .lg\:justify-end {
+    justify-content: flex-start;
+  }
+}
+
+/* RTL Animation Support */
+.rtl .slide-in-left {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.rtl .slide-in-right {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* RTL Font Support */
+.rtl .fa-font {
+  font-family: Tanha, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL Glassmorphism Adjustments */
+.rtl .glass-card {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* RTL Scrollbar Adjustments */
+.rtl ::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+}
+
+/* RTL Focus States */
+.rtl *:focus {
+  outline-offset: 2px;
+}
+
+/* RTL Selection */
+.rtl ::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* RTL Print Styles */
+@media print {
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .rtl .print-break {
+    page-break-before: always;
+  }
+}
