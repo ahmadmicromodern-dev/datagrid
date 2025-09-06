@@ -59,7 +59,7 @@ export default function RootLayout({
       className={`${montserrat.variable} ${openSans.variable}`} 
       suppressHydrationWarning
     >
-      <body className="font-sans antialiased rtl" suppressHydrationWarning>
+      <body className="font-sans antialiased rtl fa-font" suppressHydrationWarning>
         <RTLProvider initialLanguage="fa">
           <ThemeProvider>
             {children}

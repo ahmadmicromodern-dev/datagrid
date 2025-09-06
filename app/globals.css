@@ -18,6 +18,56 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* تعریف فونت تنها از public/fonts */
+
+/* فونت Tanha (نسخه اصلی) */
+@font-face {
+  font-family: 'Tanha';
+  src: url('/fonts/Tanha.woff2') format('woff2'),
+       url('/fonts/Tanha.woff') format('woff'),
+       url('/fonts/Tanha.ttf') format('truetype'),
+       url('/fonts/Tanha.eot');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* فونت Tanha بدون حروف لاتین */
+@font-face {
+  font-family: 'Tanha-WOL';
+  src: url('/fonts/Without-Latin/Tanha-WOL.woff2') format('woff2'),
+       url('/fonts/Without-Latin/Tanha-WOL.woff') format('woff'),
+       url('/fonts/Without-Latin/Tanha-WOL.ttf') format('truetype'),
+       url('/fonts/Without-Latin/Tanha-WOL.eot');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* فونت Tanha با ارقام فارسی */
+@font-face {
+  font-family: 'Tanha-FD';
+  src: url('/fonts/Farsi-Digits/Tanha-FD.woff2') format('woff2'),
+       url('/fonts/Farsi-Digits/Tanha-FD.woff') format('woff'),
+       url('/fonts/Farsi-Digits/Tanha-FD.ttf') format('truetype'),
+       url('/fonts/Farsi-Digits/Tanha-FD.eot');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* فونت Tanha با ارقام فارسی و بدون حروف لاتین */
+@font-face {
+  font-family: 'Tanha-FD-WOL';
+  src: url('/fonts/Farsi-Digits-Without-Latin/Tanha-FD-WOL.woff2') format('woff2'),
+       url('/fonts/Farsi-Digits-Without-Latin/Tanha-FD-WOL.woff') format('woff'),
+       url('/fonts/Farsi-Digits-Without-Latin/Tanha-FD-WOL.ttf') format('truetype'),
+       url('/fonts/Farsi-Digits-Without-Latin/Tanha-FD-WOL.eot');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* متغیرهای CSS برای حالت روشن */
 :root {
   /* رنگ‌های به‌روزرسانی شده برای طراحی glassmorphism */
@@ -144,6 +194,8 @@
       radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
     backdrop-filter: blur(10px);
     min-height: 100vh;
+    /* استفاده از فونت تنها به عنوان فونت پیش‌فرض */
+    font-family: 'Tanha', 'Tanha-FD', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 
   /* Added glassmorphism utility classes */
@@ -278,6 +330,16 @@ body {
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Tailwind's font-sans to use Tanha */
+.font-sans {
+  font-family: 'Tanha', 'Tanha-FD', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Global font application for all elements */
+html, body, * {
+  font-family: 'Tanha', 'Tanha-FD', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* RTL Support for Persian Language */
@@ -590,8 +652,11 @@ body {
 }
 
 /* RTL Font Support */
-.rtl .fa-font {
-  font-family: Tanha, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.rtl .fa-font,
+.rtl,
+html[lang="fa"] body,
+html[dir="rtl"] body {
+  font-family: 'Tanha', 'Tanha-FD', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   direction: rtl;
   text-align: right;
 }
